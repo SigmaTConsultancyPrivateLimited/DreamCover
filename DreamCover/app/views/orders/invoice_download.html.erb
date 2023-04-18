@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Invoice</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			line-height: 1.5;
+			color: #333;
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin-top: 20px;
+		}
+
+		table th,
+		table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		table th {
+			background-color: #f5f5f5;
+		}
+
+		.invoice-header {
+			margin-bottom: 20px;
+		}
+
+		.invoice-header h1 {
+			font-size: 24px;
+			margin: 0 0 5px;
+		}
+
+		.invoice-header p {
+			margin: 0;
+			font-size: 16px;
+			color: #666;
+		}
+
+		.invoice-details {
+			margin-top: 20px;
+		}
+
+		.invoice-details p {
+			margin: 0;
+			font-size: 16px;
+			color: #666;
+		}
+
+		.invoice-total {
+			margin-top: 20px;
+			text-align: right;
+			font-size: 18px;
+		}
+
+		.invoice-total p {
+			margin: 0;
+			line-height: 1.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="invoice-header">
+		<h1>Invoice</h1>
+		<p>Invoice #<%=session[:current_invoice_id]%></p>
+		<p>Date: <%=@time.strftime("%d %B ")%></p>
+	</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Description</th>
+				<th>Price</th>
+                <th>Quantity</th>
+				<th>Total</th>
+			</tr>
+		</thead>
+		<tbody>
+         <% @cart.each do |cart| %>
+			<tr>
+				<td><%= cart.product_name %></td>
+				<td><%= cart.product_description %></td>
+				<td><%= cart.product_price %> kr</td>
+				<td><%= cart.product_quantity %></td>
+				<td><%= cart.product_price  * cart.product_quantity %> kr</td>
+			</tr>
+              <% end %>
+		</tbody>
+	</table>
+
+	<div class="invoice-total">
+		<p>Subtotal: <%= @cart_total_price %> kr</p>
+        <p>Discount (20%): <%= @cart_total_price * 20/100 %> kr</p>
+		<p>Tax(10%): <%= @cart_total_price * 10/100 %> kr</p>
+		<p>Total: <%= @cart_total_price - @cart_total_price * 20/100  - @cart_total_price * 10/100  %>  kr</p>
+	</div>
+
+	<div class="invoice-details">
+		<p>Billed to:</p>
+		<p><%=@user_info.first_name%> <%=@user_info.last_name%></p>
+		<p>123 Main St.<%=@user_info.city%></p>
+		<p><%=@user_info.state%> <%=@user_info.country%> </p>
+    </div>
+    </body>
+    </html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Incident Management Form</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f4f4f4;
+		}
+		
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+		
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+			max-width: 500px;
+			    margin: 83px auto;
+		}
+		
+		label {
+			display: block;
+			margin-bottom: 8px;
+			color: #333;
+		}
+		
+		input[type="text"],
+		input[type="email"],
+		select,
+		textarea {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			resize: none;
+		}
+		
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		
+		input[type="submit"]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<h1>Incident Management Form</h1>
+	<form action="submit.php" method="post">
+		<label for="incident_type">Incident Type:</label>
+		<select class="box" id="incident_type" name="incident_type" required>
+			<option value="">Please select</option>
+			<option value="Security Breach">High</option>
+			<option value="Data Loss">Medium</option>
+			<option value="Physical Security">Low</option>
+		</select>
+		
+		<label for="incident_description">Incident Description:</label>
+		<textarea class="box" id="incident_description" name="incident_description" required></textarea>
+		
+		<label for="incident_reporter_name">Reporter Name:</label>
+		<input class="box" type="text" id="incident_reporter_name" name="incident_reporter_name" required>
+		
+		<label for="incident_reporter_email">Reporter Email:</label>
+		<input class="box" type="email" id="incident_reporter_email" name="incident_reporter_email" required>
+		
+		<label for="incident_date_time">Incident Date and Time:</label>
+		<input class="box" type="Date" id="incident_date_time" name="incident_date_time" required>
+		
+		<input type="submit"   class=" btn-lg btn btn-secondary" value="Submit">
+	</form>
+</body>
+</html>

@@ -1,0 +1,28 @@
+
+<section class="h-100" style="font-size: larger;">
+  <div class="container py-5 h-100" data-controller="delivery" style="margin-top: 33px;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-8">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-5">
+            <h5 class="text-muted mb-0">Thanks for your Order, </h5>
+          </div>
+          <div class=" p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
+              <p class="small text-muted mb-0">Receipt Voucher : <%=session[:current_invoice_id]%> </p>
+            </div>
+              <div class="card shadow-0 border mb-4" data-delivery-target="deliveryDetail">
+              
+              </div>
+              <div data-delivery-target="deliveryTotal">
+                
+              </div>
+              <div class="back-to-shop">
+                    <a href= "/orders/cancel_order" style=" margin: 10px 15px;"  type="button" class="btn btn-danger index-anch btn-lg">Cancel Order</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

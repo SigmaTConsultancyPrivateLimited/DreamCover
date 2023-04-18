@@ -1,0 +1,88 @@
+        <div class="container-delivery">
+
+            <form action="" style="    margin-top: 104px;">
+
+                <div class="row">
+                    <div class="col">
+                        <h3 class="title">billing <address></address></h3>
+                        <div class="inputBox">
+                            <span>full name :</span>
+                            <input type="text" placeholder="John Durairaj">
+                        </div>
+                        <div class="inputBox">
+                            <span>email :</span>
+                            <input type="email" placeholder="example@example.com">
+                        </div>
+                        <div class="inputBox">
+                            <span>address :</span>
+                            <input type="text" placeholder="room - street - locality">
+                        </div>
+                        <div class="inputBox">
+                            <span>city :</span>
+                            <input type="text" placeholder="mumbai">
+                        </div>
+
+                        <div class="flex">
+                            <div class="inputBox">
+                                <span>state :</span>
+                                <input type="text" placeholder="india">
+                        </div>
+                        <div class="inputBox">
+                            <span>zip code :</span>
+                            <input type="text" placeholder="123 456">
+                    </div>
+                    </div>
+                    </div>
+                    <div class="col">
+                        <h3 class="title">payment</h3>
+                    
+                        <div class="inputBox">
+                            <span>cards accepted :</span>
+                            <img src="img/card_img.png" alt="">
+                        </div>
+                        <div class="inputBox">
+                            <span>name on card :</span>
+                            <input type="text" placeholder="mr. john durairaj">
+                        </div>
+                        <div class="inputBox">
+                            <span>credit card number :</span>
+                            <input type="number" placeholder="1111-2222-3333-4444">
+                        </div>
+                        <div class="inputBox">
+                            <span>exp month:</span>
+                            <input type="text" placeholder="january">
+                    </div>
+                     
+                    <div class="flex">
+                        <div class="inputBox">
+                            <span>exp year :</span>
+                            <input type="number" placeholder="2022">
+                            </div>
+                            <div class="inputBox">
+                                <span>CVV:</span>
+                                <input type="text" placeholder="1234">
+                                </div>
+                </div>
+                    </div>
+                </div>
+                 <div class="col-md-4 summary"  style="float:right;">
+                            <div  data-cart-target = "cart_total">
+                            </div>
+                            <form class="stripe-form payment-btn" action="/orders/order_confirmation"   >
+                                <script
+                                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                                    data-email="..."
+                                    data-label="Payment"
+                                    data-panel-label="Pay {{amount}}"
+                                    data-amount="... " 
+                                    data-currency="USD"
+                                    data-name="..."
+                                    data-description="..."
+                                    data-image="<%= @user_info%>">
+                                </script>
+                            </form> 
+                </div>
+                <a href="carts/cart_index_page.html" class="submit-btn">Proceed To Checkout</a>
+            </form>
+        </div>

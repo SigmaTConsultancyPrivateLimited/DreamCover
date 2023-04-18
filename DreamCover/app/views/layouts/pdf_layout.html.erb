@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invoice</title>
+</head>
+<body>
+
+          <%= render 'options/pdf_header' %>
+  
+  
+  <div class="content">
+    <%= yield %>
+  </div>
+  
+
+    <%= render 'options/pdf_footer' %>
+
+</body>
+</html>

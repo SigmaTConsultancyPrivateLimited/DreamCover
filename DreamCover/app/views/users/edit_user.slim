@@ -1,0 +1,74 @@
+body [ 
+  data-controller = "user"
+  ]
+ = form_with  scope: @user_info, method: :put, url: update_user_path do |form|
+    .container
+      .row.gutters
+        .col-xl-3.col-lg-3.col-md-12.col-sm-12.col-12
+          .card-user.h-100
+            .card-body
+              .account-settings
+                .user-profile
+                  .user-avatar
+                    img.rounded-circle[src= @user_info.file_extension alt="User Profile"]
+                  h5.user-name
+                      = @user_info.first_name =@user_info.last_name 
+                  h6.user-email
+                       = @user_info.email
+                  h6.user-email
+                       = @user_info.country
+                
+        .col-xl-9.col-lg-9.col-md-12.col-sm-12.col-12
+          .card-user.h-100
+            .card-body
+              .row.gutters
+                .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+                  h6.mb-2.text-primary
+                    | Personal Details
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="first_name"]  First Name
+                    = form.text_field :first_name, class:"box-class", placeholder:"Enter First Name", id:"first_name", data: {"user-target" => "first_name" , action: "focusout->user#first_name_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="last_name"]  Last Name
+                    = form.text_field :last_name, class:"box-class", placeholder:"Enter Last Name", id:"last_name", data: {"user-target" => "last_name" , action: "focusout->user#last_name_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="phone"]  Phone Number
+                    = form.text_field :phone_number, class:"box-class", placeholder:"Enter Phone Number", id:"phone",maxlength:"10", data: {"user-target" => "phone_number" , action: "focusout->user#phone_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                 .form-group
+                    label.lable-class[for="email"]  Email
+                    = form.text_field :email, class:"box-class", placeholder:"Enter Email id", id:"email", data: {"hello-target" => "email" , action: "focusout->user#email_validation" }
+              .row.gutters
+                .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+                  h6.mt-3.mb-2.text-primary
+                    | Address
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="file"] Country
+                    = form.select :country, @countries, {prompt: '---Select a Country---'} , class:"box-class dropdown-toggle", id:"country", data: {"user-target" => "country" , action: "click->user#country_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="file"]  State
+                    = form.select :state,  @states , {prompt:'---Select a State---'} , class:"box-class dropdown-toggle",  id:"state", data: {"user-target" => "state" , action: "click->user#state_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="file"] City
+                    = form.select :city,  @cities , {prompt: '---Select a City---'}, class:"box-class dropdown-toggle", id:"city", data: {"user-target" => "city" , action: "click->user#city_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="file"]  Zip Code
+                    = form.text_field :pincode, class:"box-class", placeholder:"Enter Zipcode", id:"zipcode", data: {"user-target" => "zipcode" , action: "focusout->user#zipcode_validation" }
+                .col-xl-6.col-lg-6.col-md-6.col-sm-6.col-12
+                  .form-group
+                    label.lable-class[for="file"]  Image
+                    = form.file_field :file_extension, class:"box-class", placeholder:"Add File ", id:"file"
+              .row.gutters
+                .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-12
+                  .text-right
+                    .right_align
+                        = form.button class:'btn-success' ,style:"font-size:14px;     background: black;"
+                    .right_align
+                        a.hyper href="/users/get_user" type="button" class="btn btn-dark index-anch" style="font-size: 14px;border-radius: 33px;     font-weight: bold;"  Cancel 
